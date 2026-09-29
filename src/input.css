@@ -66,3 +66,7 @@
     outline-offset: 2px;
   }
 }
+
+@utility page-base {
+  background-color: #FFFFFF;
+}

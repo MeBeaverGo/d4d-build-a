@@ -387,6 +387,9 @@
   .bg-white {
     background-color: var(--color-white);
   }
+  .page-base {
+    background-color: #FFFFFF;
+  }
   .p-lg {
     padding: var(--spacing-lg);
   }
