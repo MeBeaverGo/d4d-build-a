@@ -47,7 +47,7 @@ const renderBadge = (status = 'Available') => {
 
 const renderHeader = ({ href = 'index.html' } = {}) => {
   const header = document.createElement('header');
-  header.className = 'flex w-full items-center justify-between whitespace-nowrap border-b border-border bg-surface-raised px-xl py-lg';
+  header.className = 'flex w-full items-center justify-between whitespace-nowrap border-b border-border bg-surface-raised px-md py-lg md:px-xl';
   header.dataset.component = 'header';
   header.dataset.nodeId = '6:14';
   header.innerHTML = `
@@ -81,7 +81,7 @@ const renderFilterField = ({ type = 'Select', id, ariaLabel, options = [] }) => 
   }
 
   const fieldWrapper = document.createElement('div');
-  fieldWrapper.className = 'relative w-60';
+  fieldWrapper.className = 'relative w-full md:w-60';
   fieldWrapper.dataset.component = 'filter-field';
   fieldWrapper.dataset.type = type;
   fieldWrapper.dataset.nodeId = isSearch ? '5:8' : '5:5';
@@ -120,7 +120,7 @@ const renderToolCard = ({
 
   const card = document.createElement('a');
   card.href = href || `tool.html?id=${encodeURIComponent(id)}`;
-  card.className = 'group block w-80 overflow-hidden rounded-card border border-border bg-surface-raised text-left transition-shadow hover:shadow-[0_6px_16px_rgba(28,27,25,0.08)]';
+  card.className = 'group block w-full overflow-hidden rounded-card border border-border bg-surface-raised text-left transition-shadow hover:shadow-[0_6px_16px_rgba(28,27,25,0.08)] lg:w-80';
   card.dataset.component = 'tool-card';
   card.dataset.nodeId = nodeId;
   card.innerHTML = `

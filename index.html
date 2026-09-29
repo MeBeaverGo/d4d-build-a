@@ -13,10 +13,10 @@
   <main class="min-h-screen bg-surface">
     <div id="header-mount"></div>
 
-    <section class="flex w-full flex-col gap-lg bg-white p-xl">
+    <section class="flex w-full flex-col gap-lg bg-white p-md md:p-xl">
       <h1 class="font-display text-xl font-semibold leading-[1.2] text-ink">Browse the catalog</h1>
 
-      <div class="flex items-center gap-md">
+      <div class="flex flex-col items-stretch gap-md md:flex-row md:items-center">
         <span id="category-filter-mount"></span>
         <span id="name-filter-mount"></span>
 
@@ -28,7 +28,7 @@
 
       <p id="result-count" aria-live="polite" class="text-sm text-ink-muted">0 tools</p>
 
-      <div id="tool-grid" class="grid w-[1008px] grid-cols-3 gap-lg"></div>
+      <div id="tool-grid" class="grid w-full max-w-[1008px] grid-cols-1 gap-lg sm:grid-cols-2 lg:grid-cols-3"></div>
     </div>
   </main>
 
