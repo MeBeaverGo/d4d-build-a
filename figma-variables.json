@@ -1,0 +1,1095 @@
+{
+  "schema": "figma-variable-library-export",
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-29T13:41:18.233Z",
+  "source": {
+    "editorType": "figma",
+    "apiVersion": "1.0.0",
+    "plugin": "Export Variables for Copilot"
+  },
+  "summary": {
+    "collectionCount": 1,
+    "variableCount": 32,
+    "extensionCollectionCount": 0,
+    "ungroupedVariableCount": 0
+  },
+  "collections": [
+    {
+      "id": "VariableCollectionId:2:2",
+      "key": "a451b206a1e03a91b1d954ad00829b29dde51dd8",
+      "name": "Tokens",
+      "defaultModeId": "2:0",
+      "defaultModeName": "Value",
+      "remote": false,
+      "hiddenFromPublishing": false,
+      "isExtension": false,
+      "modes": [
+        {
+          "modeId": "2:0",
+          "name": "Value"
+        }
+      ],
+      "variableIds": [
+        "VariableID:2:3",
+        "VariableID:2:4",
+        "VariableID:2:5",
+        "VariableID:2:6",
+        "VariableID:2:7",
+        "VariableID:2:8",
+        "VariableID:2:9",
+        "VariableID:2:10",
+        "VariableID:2:11",
+        "VariableID:2:12",
+        "VariableID:2:13",
+        "VariableID:2:14",
+        "VariableID:2:15",
+        "VariableID:2:16",
+        "VariableID:2:17",
+        "VariableID:2:18",
+        "VariableID:2:19",
+        "VariableID:2:20",
+        "VariableID:2:21",
+        "VariableID:2:22",
+        "VariableID:2:23",
+        "VariableID:2:24",
+        "VariableID:2:25",
+        "VariableID:2:26",
+        "VariableID:2:27",
+        "VariableID:2:28",
+        "VariableID:2:29",
+        "VariableID:2:30",
+        "VariableID:2:31",
+        "VariableID:2:32",
+        "VariableID:2:33",
+        "VariableID:2:34"
+      ],
+      "variables": [
+        {
+          "id": "VariableID:2:3",
+          "key": "a68592bb6cc58a94f0260120838e25b82f6e7151",
+          "name": "color/surface",
+          "path": [
+            "color",
+            "surface"
+          ],
+          "variableCollectionId": "VariableCollectionId:2:2",
+          "collectionName": "Tokens",
+          "resolvedType": "COLOR",
+          "description": "",
+          "hiddenFromPublishing": false,
+          "remote": false,
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--color-surface)"
+          },
+          "valuesByMode": [
+            {
+              "modeId": "2:0",
+              "modeName": "Value",
+              "value": {
+                "r": 0.984314,
+                "g": 0.980392,
+                "b": 0.968627,
+                "a": 1,
+                "css": "#FBFAF7"
+              }
+            }
+          ]
+        },
+        {
+          "id": "VariableID:2:4",
+          "key": "bdc7339c3edc0b9e36bd173de0b02cee9b183f26",
+          "name": "color/surface-raised",
+          "path": [
+            "color",
+            "surface-raised"
+          ],
+          "variableCollectionId": "VariableCollectionId:2:2",
+          "collectionName": "Tokens",
+          "resolvedType": "COLOR",
+          "description": "",
+          "hiddenFromPublishing": false,
+          "remote": false,
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--color-surface-raised)"
+          },
+          "valuesByMode": [
+            {
+              "modeId": "2:0",
+              "modeName": "Value",
+              "value": {
+                "r": 1,
+                "g": 1,
+                "b": 1,
+                "a": 1,
+                "css": "#FFFFFF"
+              }
+            }
+          ]
+        },
+        {
+          "id": "VariableID:2:5",
+          "key": "da6cb6b917a5b943c24df1cdcf7260e8577f59ac",
+          "name": "color/border",
+          "path": [
+            "color",
+            "border"
+          ],
+          "variableCollectionId": "VariableCollectionId:2:2",
+          "collectionName": "Tokens",
+          "resolvedType": "COLOR",
+          "description": "",
+          "hiddenFromPublishing": false,
+          "remote": false,
+          "scopes": [
+            "STROKE_COLOR"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--color-border)"
+          },
+          "valuesByMode": [
+            {
+              "modeId": "2:0",
+              "modeName": "Value",
+              "value": {
+                "r": 0.894118,
+                "g": 0.87451,
+                "b": 0.835294,
+                "a": 1,
+                "css": "#E4DFD5"
+              }
+            }
+          ]
+        },
+        {
+          "id": "VariableID:2:6",
+          "key": "9e54a6b31187443722074e8aeee042cac06e3fb0",
+          "name": "color/ink",
+          "path": [
+            "color",
+            "ink"
+          ],
+          "variableCollectionId": "VariableCollectionId:2:2",
+          "collectionName": "Tokens",
+          "resolvedType": "COLOR",
+          "description": "",
+          "hiddenFromPublishing": false,
+          "remote": false,
+          "scopes": [
+            "TEXT_FILL"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--color-ink)"
+          },
+          "valuesByMode": [
+            {
+              "modeId": "2:0",
+              "modeName": "Value",
+              "value": {
+                "r": 0.109804,
+                "g": 0.105882,
+                "b": 0.098039,
+                "a": 1,
+                "css": "#1C1B19"
+              }
+            }
+          ]
+        },
+        {
+          "id": "VariableID:2:7",
+          "key": "c8f78eb9055eea25c7ac7a3c3a3c590eb0da9b5f",
+          "name": "color/ink-muted",
+          "path": [
+            "color",
+            "ink-muted"
+          ],
+          "variableCollectionId": "VariableCollectionId:2:2",
+          "collectionName": "Tokens",
+          "resolvedType": "COLOR",
+          "description": "",
+          "hiddenFromPublishing": false,
+          "remote": false,
+          "scopes": [
+            "TEXT_FILL"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--color-ink-muted)"
+          },
+          "valuesByMode": [
+            {
+              "modeId": "2:0",
+              "modeName": "Value",
+              "value": {
+                "r": 0.341176,
+                "g": 0.32549,
+                "b": 0.305882,
+                "a": 1,
+                "css": "#57534E"
+              }
+            }
+          ]
+        },
+        {
+          "id": "VariableID:2:8",
+          "key": "5a07705cb305cca8e02ac73e99e40b4d32012fac",
+          "name": "color/accent",
+          "path": [
+            "color",
+            "accent"
+          ],
+          "variableCollectionId": "VariableCollectionId:2:2",
+          "collectionName": "Tokens",
+          "resolvedType": "COLOR",
+          "description": "",
+          "hiddenFromPublishing": false,
+          "remote": false,
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--color-accent)"
+          },
+          "valuesByMode": [
+            {
+              "modeId": "2:0",
+              "modeName": "Value",
+              "value": {
+                "r": 0.113725,
+                "g": 0.309804,
+                "b": 0.290196,
+                "a": 1,
+                "css": "#1D4F4A"
+              }
+            }
+          ]
+        },
+        {
+          "id": "VariableID:2:9",
+          "key": "d293d5e0207679702b1d94b6e80c46b54bde09ec",
+          "name": "color/accent-hover",
+          "path": [
+            "color",
+            "accent-hover"
+          ],
+          "variableCollectionId": "VariableCollectionId:2:2",
+          "collectionName": "Tokens",
+          "resolvedType": "COLOR",
+          "description": "",
+          "hiddenFromPublishing": false,
+          "remote": false,
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--color-accent-hover)"
+          },
+          "valuesByMode": [
+            {
+              "modeId": "2:0",
+              "modeName": "Value",
+              "value": {
+                "r": 0.086275,
+                "g": 0.25098,
+                "b": 0.235294,
+                "a": 1,
+                "css": "#16403C"
+              }
+            }
+          ]
+        },
+        {
+          "id": "VariableID:2:10",
+          "key": "7704b995c096065e49a66c488c5a4f63cd05b759",
+          "name": "color/accent-ink",
+          "path": [
+            "color",
+            "accent-ink"
+          ],
+          "variableCollectionId": "VariableCollectionId:2:2",
+          "collectionName": "Tokens",
+          "resolvedType": "COLOR",
+          "description": "",
+          "hiddenFromPublishing": false,
+          "remote": false,
+          "scopes": [
+            "TEXT_FILL"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--color-accent-ink)"
+          },
+          "valuesByMode": [
+            {
+              "modeId": "2:0",
+              "modeName": "Value",
+              "value": {
+                "r": 1,
+                "g": 1,
+                "b": 1,
+                "a": 1,
+                "css": "#FFFFFF"
+              }
+            }
+          ]
+        },
+        {
+          "id": "VariableID:2:11",
+          "key": "f719c32929afc6bc4dd136293bae3f0c998bc6fb",
+          "name": "color/disabled",
+          "path": [
+            "color",
+            "disabled"
+          ],
+          "variableCollectionId": "VariableCollectionId:2:2",
+          "collectionName": "Tokens",
+          "resolvedType": "COLOR",
+          "description": "",
+          "hiddenFromPublishing": false,
+          "remote": false,
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--color-disabled)"
+          },
+          "valuesByMode": [
+            {
+              "modeId": "2:0",
+              "modeName": "Value",
+              "value": {
+                "r": 0.894118,
+                "g": 0.87451,
+                "b": 0.835294,
+                "a": 1,
+                "css": "#E4DFD5"
+              }
+            }
+          ]
+        },
+        {
+          "id": "VariableID:2:12",
+          "key": "0c349b709b2f74b93ca0045460f0ab4fd7ad5dcb",
+          "name": "color/disabled-ink",
+          "path": [
+            "color",
+            "disabled-ink"
+          ],
+          "variableCollectionId": "VariableCollectionId:2:2",
+          "collectionName": "Tokens",
+          "resolvedType": "COLOR",
+          "description": "",
+          "hiddenFromPublishing": false,
+          "remote": false,
+          "scopes": [
+            "TEXT_FILL"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--color-disabled-ink)"
+          },
+          "valuesByMode": [
+            {
+              "modeId": "2:0",
+              "modeName": "Value",
+              "value": {
+                "r": 0.541176,
+                "g": 0.521569,
+                "b": 0.490196,
+                "a": 1,
+                "css": "#8A857D"
+              }
+            }
+          ]
+        },
+        {
+          "id": "VariableID:2:13",
+          "key": "c830fdde15e429870c1998b952345aeae23cc3d8",
+          "name": "color/focus",
+          "path": [
+            "color",
+            "focus"
+          ],
+          "variableCollectionId": "VariableCollectionId:2:2",
+          "collectionName": "Tokens",
+          "resolvedType": "COLOR",
+          "description": "",
+          "hiddenFromPublishing": false,
+          "remote": false,
+          "scopes": [
+            "STROKE_COLOR"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--color-focus)"
+          },
+          "valuesByMode": [
+            {
+              "modeId": "2:0",
+              "modeName": "Value",
+              "value": {
+                "r": 0.113725,
+                "g": 0.309804,
+                "b": 0.290196,
+                "a": 1,
+                "css": "#1D4F4A"
+              }
+            }
+          ]
+        },
+        {
+          "id": "VariableID:2:14",
+          "key": "38b2b0002e44ceaadb8f90c9677feb00c98dc30c",
+          "name": "color/status-available",
+          "path": [
+            "color",
+            "status-available"
+          ],
+          "variableCollectionId": "VariableCollectionId:2:2",
+          "collectionName": "Tokens",
+          "resolvedType": "COLOR",
+          "description": "",
+          "hiddenFromPublishing": false,
+          "remote": false,
+          "scopes": [
+            "TEXT_FILL"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--color-status-available)"
+          },
+          "valuesByMode": [
+            {
+              "modeId": "2:0",
+              "modeName": "Value",
+              "value": {
+                "r": 0.184314,
+                "g": 0.419608,
+                "b": 0.247059,
+                "a": 1,
+                "css": "#2F6B3F"
+              }
+            }
+          ]
+        },
+        {
+          "id": "VariableID:2:15",
+          "key": "78e612c8de20cf272546270d6854e1df2747a8a0",
+          "name": "color/status-out",
+          "path": [
+            "color",
+            "status-out"
+          ],
+          "variableCollectionId": "VariableCollectionId:2:2",
+          "collectionName": "Tokens",
+          "resolvedType": "COLOR",
+          "description": "",
+          "hiddenFromPublishing": false,
+          "remote": false,
+          "scopes": [
+            "TEXT_FILL"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--color-status-out)"
+          },
+          "valuesByMode": [
+            {
+              "modeId": "2:0",
+              "modeName": "Value",
+              "value": {
+                "r": 0.541176,
+                "g": 0.352941,
+                "b": 0.070588,
+                "a": 1,
+                "css": "#8A5A12"
+              }
+            }
+          ]
+        },
+        {
+          "id": "VariableID:2:16",
+          "key": "0fc67b3ad2e05525e5dca7101a3cdef1c054fe30",
+          "name": "color/status-repair",
+          "path": [
+            "color",
+            "status-repair"
+          ],
+          "variableCollectionId": "VariableCollectionId:2:2",
+          "collectionName": "Tokens",
+          "resolvedType": "COLOR",
+          "description": "",
+          "hiddenFromPublishing": false,
+          "remote": false,
+          "scopes": [
+            "TEXT_FILL"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--color-status-repair)"
+          },
+          "valuesByMode": [
+            {
+              "modeId": "2:0",
+              "modeName": "Value",
+              "value": {
+                "r": 0.545098,
+                "g": 0.184314,
+                "b": 0.184314,
+                "a": 1,
+                "css": "#8B2F2F"
+              }
+            }
+          ]
+        },
+        {
+          "id": "VariableID:2:17",
+          "key": "320dcb76c6448d70968b5d3d029ccaa53acc2ca9",
+          "name": "color/status-hold",
+          "path": [
+            "color",
+            "status-hold"
+          ],
+          "variableCollectionId": "VariableCollectionId:2:2",
+          "collectionName": "Tokens",
+          "resolvedType": "COLOR",
+          "description": "",
+          "hiddenFromPublishing": false,
+          "remote": false,
+          "scopes": [
+            "TEXT_FILL"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--color-status-hold)"
+          },
+          "valuesByMode": [
+            {
+              "modeId": "2:0",
+              "modeName": "Value",
+              "value": {
+                "r": 0.176471,
+                "g": 0.294118,
+                "b": 0.541176,
+                "a": 1,
+                "css": "#2D4B8A"
+              }
+            }
+          ]
+        },
+        {
+          "id": "VariableID:2:18",
+          "key": "7ee43336078a1bb34bf71d70877f2930dac13cbb",
+          "name": "color/status-available-bg",
+          "path": [
+            "color",
+            "status-available-bg"
+          ],
+          "variableCollectionId": "VariableCollectionId:2:2",
+          "collectionName": "Tokens",
+          "resolvedType": "COLOR",
+          "description": "",
+          "hiddenFromPublishing": false,
+          "remote": false,
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--color-status-available-bg)"
+          },
+          "valuesByMode": [
+            {
+              "modeId": "2:0",
+              "modeName": "Value",
+              "value": {
+                "r": 0.913725,
+                "g": 0.945098,
+                "b": 0.921569,
+                "a": 1,
+                "css": "#E9F1EB"
+              }
+            }
+          ]
+        },
+        {
+          "id": "VariableID:2:19",
+          "key": "d92cb0f457f6f1937180ee4e0cb339e63fc1cb8a",
+          "name": "color/status-out-bg",
+          "path": [
+            "color",
+            "status-out-bg"
+          ],
+          "variableCollectionId": "VariableCollectionId:2:2",
+          "collectionName": "Tokens",
+          "resolvedType": "COLOR",
+          "description": "",
+          "hiddenFromPublishing": false,
+          "remote": false,
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--color-status-out-bg)"
+          },
+          "valuesByMode": [
+            {
+              "modeId": "2:0",
+              "modeName": "Value",
+              "value": {
+                "r": 0.968627,
+                "g": 0.937255,
+                "b": 0.878431,
+                "a": 1,
+                "css": "#F7EFE0"
+              }
+            }
+          ]
+        },
+        {
+          "id": "VariableID:2:20",
+          "key": "282f23c435e5ea71cf5e4275991a5680ee88c1fe",
+          "name": "color/status-repair-bg",
+          "path": [
+            "color",
+            "status-repair-bg"
+          ],
+          "variableCollectionId": "VariableCollectionId:2:2",
+          "collectionName": "Tokens",
+          "resolvedType": "COLOR",
+          "description": "",
+          "hiddenFromPublishing": false,
+          "remote": false,
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--color-status-repair-bg)"
+          },
+          "valuesByMode": [
+            {
+              "modeId": "2:0",
+              "modeName": "Value",
+              "value": {
+                "r": 0.968627,
+                "g": 0.913725,
+                "b": 0.913725,
+                "a": 1,
+                "css": "#F7E9E9"
+              }
+            }
+          ]
+        },
+        {
+          "id": "VariableID:2:21",
+          "key": "119f909dba58c2adbb9c98a481fb4586da6944a9",
+          "name": "color/status-hold-bg",
+          "path": [
+            "color",
+            "status-hold-bg"
+          ],
+          "variableCollectionId": "VariableCollectionId:2:2",
+          "collectionName": "Tokens",
+          "resolvedType": "COLOR",
+          "description": "",
+          "hiddenFromPublishing": false,
+          "remote": false,
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--color-status-hold-bg)"
+          },
+          "valuesByMode": [
+            {
+              "modeId": "2:0",
+              "modeName": "Value",
+              "value": {
+                "r": 0.909804,
+                "g": 0.929412,
+                "b": 0.968627,
+                "a": 1,
+                "css": "#E8EDF7"
+              }
+            }
+          ]
+        },
+        {
+          "id": "VariableID:2:22",
+          "key": "a740d3105564e838385c0a672c4cc80e6fc7953c",
+          "name": "spacing/xs",
+          "path": [
+            "spacing",
+            "xs"
+          ],
+          "variableCollectionId": "VariableCollectionId:2:2",
+          "collectionName": "Tokens",
+          "resolvedType": "FLOAT",
+          "description": "",
+          "hiddenFromPublishing": false,
+          "remote": false,
+          "scopes": [
+            "GAP"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--spacing-xs)"
+          },
+          "valuesByMode": [
+            {
+              "modeId": "2:0",
+              "modeName": "Value",
+              "value": 4
+            }
+          ]
+        },
+        {
+          "id": "VariableID:2:23",
+          "key": "7bce1e177c38ae52b29636ba099873f11faacda4",
+          "name": "spacing/sm",
+          "path": [
+            "spacing",
+            "sm"
+          ],
+          "variableCollectionId": "VariableCollectionId:2:2",
+          "collectionName": "Tokens",
+          "resolvedType": "FLOAT",
+          "description": "",
+          "hiddenFromPublishing": false,
+          "remote": false,
+          "scopes": [
+            "GAP"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--spacing-sm)"
+          },
+          "valuesByMode": [
+            {
+              "modeId": "2:0",
+              "modeName": "Value",
+              "value": 8
+            }
+          ]
+        },
+        {
+          "id": "VariableID:2:24",
+          "key": "96e6ac39be74cd2a79c81e51d461765d26921760",
+          "name": "spacing/md",
+          "path": [
+            "spacing",
+            "md"
+          ],
+          "variableCollectionId": "VariableCollectionId:2:2",
+          "collectionName": "Tokens",
+          "resolvedType": "FLOAT",
+          "description": "",
+          "hiddenFromPublishing": false,
+          "remote": false,
+          "scopes": [
+            "GAP"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--spacing-md)"
+          },
+          "valuesByMode": [
+            {
+              "modeId": "2:0",
+              "modeName": "Value",
+              "value": 16
+            }
+          ]
+        },
+        {
+          "id": "VariableID:2:25",
+          "key": "7ab010dba7e7de7cf3005797ac6360c1b78054ca",
+          "name": "spacing/lg",
+          "path": [
+            "spacing",
+            "lg"
+          ],
+          "variableCollectionId": "VariableCollectionId:2:2",
+          "collectionName": "Tokens",
+          "resolvedType": "FLOAT",
+          "description": "",
+          "hiddenFromPublishing": false,
+          "remote": false,
+          "scopes": [
+            "GAP"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--spacing-lg)"
+          },
+          "valuesByMode": [
+            {
+              "modeId": "2:0",
+              "modeName": "Value",
+              "value": 24
+            }
+          ]
+        },
+        {
+          "id": "VariableID:2:26",
+          "key": "da745c420971372ff9e7d58d494d755089550acb",
+          "name": "spacing/xl",
+          "path": [
+            "spacing",
+            "xl"
+          ],
+          "variableCollectionId": "VariableCollectionId:2:2",
+          "collectionName": "Tokens",
+          "resolvedType": "FLOAT",
+          "description": "",
+          "hiddenFromPublishing": false,
+          "remote": false,
+          "scopes": [
+            "GAP"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--spacing-xl)"
+          },
+          "valuesByMode": [
+            {
+              "modeId": "2:0",
+              "modeName": "Value",
+              "value": 40
+            }
+          ]
+        },
+        {
+          "id": "VariableID:2:27",
+          "key": "cac3f6443f605c2e3a65043e4092570aef4cadb0",
+          "name": "radius/sm",
+          "path": [
+            "radius",
+            "sm"
+          ],
+          "variableCollectionId": "VariableCollectionId:2:2",
+          "collectionName": "Tokens",
+          "resolvedType": "FLOAT",
+          "description": "",
+          "hiddenFromPublishing": false,
+          "remote": false,
+          "scopes": [
+            "CORNER_RADIUS"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--radius-sm)"
+          },
+          "valuesByMode": [
+            {
+              "modeId": "2:0",
+              "modeName": "Value",
+              "value": 4
+            }
+          ]
+        },
+        {
+          "id": "VariableID:2:28",
+          "key": "0bda7bdf4f9166a6f94d53fa1ce3f45e82716708",
+          "name": "radius/card",
+          "path": [
+            "radius",
+            "card"
+          ],
+          "variableCollectionId": "VariableCollectionId:2:2",
+          "collectionName": "Tokens",
+          "resolvedType": "FLOAT",
+          "description": "",
+          "hiddenFromPublishing": false,
+          "remote": false,
+          "scopes": [
+            "CORNER_RADIUS"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--radius-card)"
+          },
+          "valuesByMode": [
+            {
+              "modeId": "2:0",
+              "modeName": "Value",
+              "value": 8
+            }
+          ]
+        },
+        {
+          "id": "VariableID:2:29",
+          "key": "f327ea91c3e2a9e29964ca0786fe76edc958367a",
+          "name": "radius/full",
+          "path": [
+            "radius",
+            "full"
+          ],
+          "variableCollectionId": "VariableCollectionId:2:2",
+          "collectionName": "Tokens",
+          "resolvedType": "FLOAT",
+          "description": "",
+          "hiddenFromPublishing": false,
+          "remote": false,
+          "scopes": [
+            "CORNER_RADIUS"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--radius-full)"
+          },
+          "valuesByMode": [
+            {
+              "modeId": "2:0",
+              "modeName": "Value",
+              "value": 999
+            }
+          ]
+        },
+        {
+          "id": "VariableID:2:30",
+          "key": "96a35f55f40d9426532621532c429d73007922fd",
+          "name": "type/size/xs",
+          "path": [
+            "type",
+            "size",
+            "xs"
+          ],
+          "variableCollectionId": "VariableCollectionId:2:2",
+          "collectionName": "Tokens",
+          "resolvedType": "FLOAT",
+          "description": "",
+          "hiddenFromPublishing": false,
+          "remote": false,
+          "scopes": [
+            "FONT_SIZE"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--text-xs)"
+          },
+          "valuesByMode": [
+            {
+              "modeId": "2:0",
+              "modeName": "Value",
+              "value": 12
+            }
+          ]
+        },
+        {
+          "id": "VariableID:2:31",
+          "key": "3faadb76fb86efc6e97321895b10daca8fd09c70",
+          "name": "type/size/sm",
+          "path": [
+            "type",
+            "size",
+            "sm"
+          ],
+          "variableCollectionId": "VariableCollectionId:2:2",
+          "collectionName": "Tokens",
+          "resolvedType": "FLOAT",
+          "description": "",
+          "hiddenFromPublishing": false,
+          "remote": false,
+          "scopes": [
+            "FONT_SIZE"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--text-sm)"
+          },
+          "valuesByMode": [
+            {
+              "modeId": "2:0",
+              "modeName": "Value",
+              "value": 14
+            }
+          ]
+        },
+        {
+          "id": "VariableID:2:32",
+          "key": "3895b079ecb56825777cb47674a8dddb6ec0776d",
+          "name": "type/size/base",
+          "path": [
+            "type",
+            "size",
+            "base"
+          ],
+          "variableCollectionId": "VariableCollectionId:2:2",
+          "collectionName": "Tokens",
+          "resolvedType": "FLOAT",
+          "description": "",
+          "hiddenFromPublishing": false,
+          "remote": false,
+          "scopes": [
+            "FONT_SIZE"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--text-base)"
+          },
+          "valuesByMode": [
+            {
+              "modeId": "2:0",
+              "modeName": "Value",
+              "value": 16
+            }
+          ]
+        },
+        {
+          "id": "VariableID:2:33",
+          "key": "5332b0e45de5de7c136488c4973c51b5afea401a",
+          "name": "type/size/lg",
+          "path": [
+            "type",
+            "size",
+            "lg"
+          ],
+          "variableCollectionId": "VariableCollectionId:2:2",
+          "collectionName": "Tokens",
+          "resolvedType": "FLOAT",
+          "description": "",
+          "hiddenFromPublishing": false,
+          "remote": false,
+          "scopes": [
+            "FONT_SIZE"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--text-lg)"
+          },
+          "valuesByMode": [
+            {
+              "modeId": "2:0",
+              "modeName": "Value",
+              "value": 20
+            }
+          ]
+        },
+        {
+          "id": "VariableID:2:34",
+          "key": "7d09bef90f0e191309036681966cc2a7a00c1d51",
+          "name": "type/size/xl",
+          "path": [
+            "type",
+            "size",
+            "xl"
+          ],
+          "variableCollectionId": "VariableCollectionId:2:2",
+          "collectionName": "Tokens",
+          "resolvedType": "FLOAT",
+          "description": "",
+          "hiddenFromPublishing": false,
+          "remote": false,
+          "scopes": [
+            "FONT_SIZE"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--text-xl)"
+          },
+          "valuesByMode": [
+            {
+              "modeId": "2:0",
+              "modeName": "Value",
+              "value": 32
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "ungroupedVariables": []
+}
