@@ -116,40 +116,14 @@
     };
 
     const renderCard = (tool, categoryLabel) => {
-      const card = document.createElement('a');
-      card.href = `tool.html?id=${encodeURIComponent(tool.id)}`;
-      card.className = 'group block rounded-[12px] border border-border bg-surface-raised p-5 text-left shadow-[0_1px_0_rgba(28,27,25,0.04)] transition-shadow hover:shadow-[0_6px_16px_rgba(28,27,25,0.08)]';
-
-      const iconPath = `images/${tool.category}.svg`;
-      const statusVariant = {
-        available: 'Available',
-        checked_out: 'CheckedOut',
-        repair: 'Repair'
-      }[tool.availability] || 'Available';
-
-      card.innerHTML = `
-        <div class="flex items-start gap-3">
-          <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-card bg-[#F3F0EA] ring-1 ring-[#E7E0D5]">
-            <img src="${iconPath}" alt="${categoryLabel} icon" class="h-6 w-6" />
-          </div>
-          <div class="min-w-0 flex-1">
-            <h2 class="font-display text-[28px] leading-tight tracking-[-0.04em] text-ink">${tool.name}</h2>
-            <p class="mt-2 text-sm font-medium text-ink-muted">${categoryLabel}</p>
-          </div>
-        </div>
-
-        <div class="mt-5 flex items-center justify-between gap-3">
-          <span data-badge-slot></span>
-        </div>
-
-        <p class="mt-4 text-sm leading-6 text-ink-muted">${getMetaLine(tool)}</p>
-      `;
-
-      card.querySelector('[data-badge-slot]').replaceWith(
-        window.SixthWardComponents.renderBadge(statusVariant)
-      );
-
-      return card;
+      return window.SixthWardComponents.renderToolCard({
+        id: tool.id,
+        name: tool.name,
+        category: tool.category,
+        categoryLabel,
+        availability: tool.availability,
+        metaLine: getMetaLine(tool)
+      });
     };
 
     const updateFilters = (tools, categories) => {

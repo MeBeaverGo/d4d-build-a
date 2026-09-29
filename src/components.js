@@ -72,7 +72,51 @@ const renderFilterField = ({ type = 'Select', id, ariaLabel, options = [] }) => 
   return fieldWrapper;
 };
 
+const renderToolCard = ({
+  id,
+  name,
+  category,
+  categoryLabel,
+  availability = 'available',
+  metaLine,
+  href
+}) => {
+  const statusVariant = {
+    available: 'Available',
+    checked_out: 'CheckedOut',
+    repair: 'Repair'
+  }[availability] || 'Available';
+  const nodeId = {
+    available: '4:2',
+    checked_out: '4:10',
+    repair: '4:18'
+  }[availability] || '4:2';
+
+  const card = document.createElement('a');
+  card.href = href || `tool.html?id=${encodeURIComponent(id)}`;
+  card.className = 'group block w-80 overflow-hidden rounded-card border border-border bg-surface-raised text-left transition-shadow hover:shadow-[0_6px_16px_rgba(28,27,25,0.08)]';
+  card.dataset.component = 'tool-card';
+  card.dataset.nodeId = nodeId;
+  card.innerHTML = `
+    <div class="flex h-60 w-full items-center justify-center overflow-hidden bg-surface">
+      <img src="images/${category}.svg" alt="${categoryLabel} icon" class="h-16 w-16" />
+    </div>
+    <div class="flex w-full flex-col gap-sm overflow-hidden bg-surface-raised p-md">
+      <p class="font-body text-sm leading-[1.45] text-ink-muted">${categoryLabel}</p>
+      <h2 class="font-display text-lg font-semibold leading-[1.3] text-ink">${name}</h2>
+      <div data-badge-slot></div>
+      <p class="font-body text-sm leading-[1.45] text-ink-muted">${metaLine}</p>
+    </div>
+  `;
+  card.querySelector('[data-badge-slot]').replaceWith(
+    renderBadge(statusVariant)
+  );
+
+  return card;
+};
+
 window.SixthWardComponents = {
   renderBadge,
-  renderFilterField
+  renderFilterField,
+  renderToolCard
 };
