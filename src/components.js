@@ -3,35 +3,45 @@ const badgeVariants = {
     background: 'bg-status-available-bg',
     color: 'text-status-available',
     label: 'Available',
-    nodeId: '3:2'
+    nodeId: '3:2',
+    textNodeId: '3:3'
   },
   CheckedOut: {
     background: 'bg-status-out-bg',
     color: 'text-status-out',
     label: 'Checked out',
-    nodeId: '3:4'
+    nodeId: '3:4',
+    textNodeId: '3:5'
   },
   Repair: {
     background: 'bg-status-repair-bg',
     color: 'text-status-repair',
     label: 'Out for repair',
-    nodeId: '3:6'
+    nodeId: '3:6',
+    textNodeId: '3:7'
   },
   OnHold: {
     background: 'bg-status-hold-bg',
     color: 'text-status-hold',
     label: 'On hold',
-    nodeId: '3:8'
+    nodeId: '3:8',
+    textNodeId: '3:9'
   }
 };
 
 const renderBadge = (status = 'Available') => {
   const variant = badgeVariants[status] || badgeVariants.Available;
-  const badge = document.createElement('span');
-  badge.className = `inline-flex items-center rounded-full px-sm py-xs font-body text-xs font-medium leading-[1.3] ${variant.background} ${variant.color}`;
+  const badge = document.createElement('div');
+  badge.className = `relative inline-flex shrink-0 items-center rounded-full px-sm py-xs ${variant.background}`;
   badge.dataset.component = 'badge';
   badge.dataset.nodeId = variant.nodeId;
-  badge.textContent = variant.label;
+
+  const label = document.createElement('p');
+  label.className = `whitespace-nowrap font-body text-xs font-medium leading-[1.3] ${variant.color}`;
+  label.dataset.nodeId = variant.textNodeId;
+  label.textContent = variant.label;
+  badge.appendChild(label);
+
   return badge;
 };
 
@@ -101,7 +111,7 @@ const renderToolCard = ({
     <div class="flex h-60 w-full items-center justify-center overflow-hidden bg-surface">
       <img src="images/${category}.svg" alt="${categoryLabel} icon" class="h-16 w-16" />
     </div>
-    <div class="flex w-full flex-col gap-sm overflow-hidden bg-surface-raised p-md">
+    <div class="flex w-full flex-col items-start gap-sm overflow-hidden bg-surface-raised p-md">
       <p class="font-body text-sm leading-[1.45] text-ink-muted">${categoryLabel}</p>
       <h2 class="font-display text-lg font-semibold leading-[1.3] text-ink">${name}</h2>
       <div data-badge-slot></div>
