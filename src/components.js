@@ -45,6 +45,44 @@ const renderBadge = (status = 'Available') => {
   return badge;
 };
 
+const buttonVariants = {
+  Primary: {
+    Default: { background: 'bg-accent', text: 'text-accent-ink', nodeId: '3:11', textNodeId: '3:12' },
+    Hover: { background: 'bg-accent-hover', text: 'text-accent-ink', nodeId: '3:13', textNodeId: '3:14' },
+    Focus: { background: 'bg-accent', text: 'text-accent-ink', border: 'border-2 border-focus', nodeId: '3:15', textNodeId: '3:16' },
+    Disabled: { background: 'bg-disabled', text: 'text-disabled-ink', nodeId: '3:17', textNodeId: '3:18' }
+  },
+  Secondary: {
+    Default: { background: 'bg-surface-raised border border-border', text: 'text-ink', nodeId: '3:19', textNodeId: '3:20' },
+    Hover: { background: 'bg-surface border border-border', text: 'text-ink', nodeId: '3:21', textNodeId: '3:22' },
+    Focus: { background: 'bg-surface-raised border-2 border-focus', text: 'text-ink', nodeId: '3:23', textNodeId: '3:24' },
+    Disabled: { background: 'bg-surface border border-border', text: 'text-disabled-ink', nodeId: '3:25', textNodeId: '3:26' }
+  }
+};
+
+const renderButton = ({
+  label = 'Place hold',
+  style = 'Primary',
+  state = 'Default',
+  type = 'button'
+} = {}) => {
+  const variant = buttonVariants[style]?.[state] || buttonVariants.Primary.Default;
+  const button = document.createElement('button');
+  button.type = type;
+  button.className = `relative inline-flex items-center rounded-sm px-lg py-md font-body text-base font-semibold leading-[1.2] ${variant.background} ${variant.border || ''}`;
+  button.disabled = state === 'Disabled';
+  button.dataset.component = 'button';
+  button.dataset.nodeId = variant.nodeId;
+
+  const text = document.createElement('span');
+  text.className = `whitespace-nowrap ${variant.text}`;
+  text.dataset.nodeId = variant.textNodeId;
+  text.textContent = label;
+  button.appendChild(text);
+
+  return button;
+};
+
 const renderHeader = ({ href = 'index.html' } = {}) => {
   const header = document.createElement('header');
   header.className = 'flex w-full items-center justify-between whitespace-nowrap border-b border-border bg-surface-raised px-md py-lg md:px-xl';
@@ -143,6 +181,7 @@ const renderToolCard = ({
 
 window.SixthWardComponents = {
   renderBadge,
+  renderButton,
   renderHeader,
   renderFilterField,
   renderToolCard

@@ -322,12 +322,28 @@
     border-style: var(--tw-border-style);
     border-width: 1px;
   }
+  .border-2 {
+    border-style: var(--tw-border-style);
+    border-width: 2px;
+  }
   .border-b {
     border-bottom-style: var(--tw-border-style);
     border-bottom-width: 1px;
   }
   .border-border {
     border-color: var(--color-border);
+  }
+  .border-focus {
+    border-color: var(--color-focus);
+  }
+  .bg-accent {
+    background-color: var(--color-accent);
+  }
+  .bg-accent-hover {
+    background-color: var(--color-accent-hover);
+  }
+  .bg-disabled {
+    background-color: var(--color-disabled);
   }
   .bg-status-available-bg {
     background-color: var(--color-status-available-bg);
@@ -356,6 +372,9 @@
   .p-md {
     padding: var(--spacing-md);
   }
+  .px-lg {
+    padding-inline: var(--spacing-lg);
+  }
   .px-md {
     padding-inline: var(--spacing-md);
   }
@@ -364,6 +383,9 @@
   }
   .py-lg {
     padding-block: var(--spacing-lg);
+  }
+  .py-md {
+    padding-block: var(--spacing-md);
   }
   .py-xs {
     padding-block: var(--spacing-xs);
@@ -429,6 +451,12 @@
   }
   .text-accent {
     color: var(--color-accent);
+  }
+  .text-accent-ink {
+    color: var(--color-accent-ink);
+  }
+  .text-disabled-ink {
+    color: var(--color-disabled-ink);
   }
   .text-ink {
     color: var(--color-ink);
