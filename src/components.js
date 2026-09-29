@@ -83,6 +83,31 @@ const renderButton = ({
   return button;
 };
 
+const renderEmptyState = ({ onClear } = {}) => {
+  const emptyState = document.createElement('div');
+  emptyState.className = 'flex w-full max-w-160 flex-col items-center gap-md rounded-card bg-surface py-xl';
+  emptyState.dataset.component = 'empty-state';
+  emptyState.dataset.nodeId = '5:19';
+
+  const heading = document.createElement('p');
+  heading.className = 'font-display text-lg font-semibold leading-[1.3] text-ink';
+  heading.dataset.nodeId = '5:20';
+  heading.textContent = 'No tools match these filters';
+
+  const message = document.createElement('p');
+  message.className = 'font-body text-base leading-[1.5] text-ink-muted';
+  message.dataset.nodeId = '5:21';
+  message.textContent = 'Try a different category, or clear the filters to see everything.';
+
+  const clearButton = renderButton({ label: 'Clear filters', style: 'Secondary' });
+  clearButton.dataset.nodeId = '5:22';
+  clearButton.firstElementChild.dataset.nodeId = 'I5:22;3:20';
+  clearButton.addEventListener('click', onClear);
+
+  emptyState.append(heading, message, clearButton);
+  return emptyState;
+};
+
 const renderAvailabilityToggle = ({ id = 'available-only', state = false } = {}) => {
   const toggle = document.createElement('label');
   toggle.className = 'relative inline-flex cursor-pointer items-center gap-sm';
@@ -224,6 +249,7 @@ const renderToolCard = ({
 window.SixthWardComponents = {
   renderBadge,
   renderButton,
+  renderEmptyState,
   renderAvailabilityToggle,
   renderHeader,
   renderFilterField,

@@ -239,6 +239,9 @@
   .grid {
     display: grid;
   }
+  .hidden {
+    display: none;
+  }
   .inline-flex {
     display: inline-flex;
   }
@@ -267,6 +270,9 @@
   }
   .w-full {
     width: 100%;
+  }
+  .max-w-160 {
+    max-width: calc(var(--spacing) * 160);
   }
   .max-w-\[1008px\] {
     max-width: 1008px;
@@ -394,6 +400,9 @@
   }
   .py-md {
     padding-block: var(--spacing-md);
+  }
+  .py-xl {
+    padding-block: var(--spacing-xl);
   }
   .py-xs {
     padding-block: var(--spacing-xs);

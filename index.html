@@ -26,6 +26,7 @@
       <p id="result-count" aria-live="polite" class="text-sm text-ink-muted">0 tools</p>
 
       <div id="tool-grid" class="grid w-full max-w-[1008px] grid-cols-1 gap-lg sm:grid-cols-2 lg:grid-cols-3"></div>
+      <div id="empty-state-mount" hidden></div>
     </div>
   </main>
 
@@ -33,6 +34,7 @@
   <script>
     const toolGrid = document.getElementById('tool-grid');
     const resultCount = document.getElementById('result-count');
+    let emptyState;
 
     document.getElementById('header-mount').replaceWith(
       window.SixthWardComponents.renderHeader()
@@ -117,10 +119,14 @@
       toolGrid.innerHTML = '';
 
       if (!filtered.length) {
+        toolGrid.hidden = true;
+        emptyState.hidden = false;
         resultCount.textContent = '0 tools';
         return;
       }
 
+      toolGrid.hidden = false;
+      emptyState.hidden = true;
       resultCount.textContent = `${filtered.length} ${filtered.length === 1 ? 'tool' : 'tools'}`;
 
       const categoryById = Object.fromEntries(categories.map((category) => [category.id, category.label]));
@@ -140,6 +146,16 @@
       .then((data) => {
         const categories = data.categories || [];
         const tools = (data.tools || []).filter((tool) => tool.availability !== 'retired');
+
+        emptyState = window.SixthWardComponents.renderEmptyState({
+          onClear: () => {
+            categoryFilter.value = 'all';
+            availableOnlyInput.checked = false;
+            nameFilterInput.value = '';
+            availableOnlyInput.dispatchEvent(new Event('change'));
+          }
+        });
+        document.getElementById('empty-state-mount').replaceWith(emptyState);
 
         categories.forEach((category) => {
           const option = document.createElement('option');
