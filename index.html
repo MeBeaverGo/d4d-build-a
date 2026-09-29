@@ -11,25 +11,7 @@
 </head>
 <body class="min-h-screen bg-surface font-body text-ink antialiased">
   <main class="mx-auto max-w-[1440px] px-xl pb-[80px] pt-xl">
-    <header class="mb-[48px]">
-      <div class="flex items-center justify-between gap-4">
-        <div class="flex items-center gap-3">
-          <div class="flex h-[48px] w-[48px] items-center justify-center rounded-full bg-[#EAF1EE] ring-1 ring-[#D7E4DD]">
-            <span class="font-display text-[24px] leading-none text-accent">S</span>
-          </div>
-          <div>
-            <p class="font-display text-[30px] leading-none tracking-[-0.04em] text-ink">Sixth Ward</p>
-            <p class="mt-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-ink-muted">Tool Library</p>
-          </div>
-        </div>
-
-        <nav aria-label="Main navigation">
-          <a href="index.html" class="inline-flex items-center rounded-full border border-border bg-surface-raised px-4 py-2 text-sm font-medium text-ink transition-colors hover:border-[#d2cab9] hover:bg-[#f5f1ea]">
-            Catalog
-          </a>
-        </nav>
-      </div>
-    </header>
+    <div id="header-mount"></div>
 
     <section class="rounded-[12px] border border-border bg-surface-raised p-5 shadow-[0_1px_0_rgba(28,27,25,0.04)]">
       <div class="flex items-end gap-[20px]">
@@ -69,6 +51,10 @@
     const emptyState = document.getElementById('empty-state');
     const resultCount = document.getElementById('result-count');
     const clearFiltersButton = document.getElementById('clear-filters');
+
+    document.getElementById('header-mount').replaceWith(
+      window.SixthWardComponents.renderHeader()
+    );
 
     const categoryFilterComponent = window.SixthWardComponents.renderFilterField({
       type: 'Select',

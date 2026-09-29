@@ -45,6 +45,22 @@ const renderBadge = (status = 'Available') => {
   return badge;
 };
 
+const renderHeader = ({ href = 'index.html' } = {}) => {
+  const header = document.createElement('header');
+  header.className = '-mx-xl mb-xl flex w-auto items-center justify-between whitespace-nowrap border-b border-border bg-surface-raised px-xl py-lg';
+  header.dataset.component = 'header';
+  header.dataset.nodeId = '6:14';
+  header.innerHTML = `
+    <p class="font-display text-lg font-semibold leading-[1.3] text-ink" data-node-id="6:15">
+      Sixth Ward Tool Library
+    </p>
+    <a class="font-body text-base leading-[1.5] text-ink-muted" href="${href}" data-node-id="6:16">
+      Catalog
+    </a>
+  `;
+  return header;
+};
+
 const renderFilterField = ({ type = 'Select', id, ariaLabel, options = [] }) => {
   const isSearch = type === 'Search';
   const field = document.createElement(isSearch ? 'input' : 'select');
@@ -127,6 +143,7 @@ const renderToolCard = ({
 
 window.SixthWardComponents = {
   renderBadge,
+  renderHeader,
   renderFilterField,
   renderToolCard
 };
