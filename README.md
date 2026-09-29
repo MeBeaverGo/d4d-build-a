@@ -17,6 +17,7 @@ tool.html           Screen 2: Tool detail
 confirmation.html   Screen 3: Hold confirmation
 src/input.css       Provided theme. Design tokens live here.
 dist/styles.css     Compiled Tailwind. Generated, and committed so a host can serve it.
+figma-variables.json Figma variable library export; the source of truth for the theme tokens.
 data/tools.json     Provided catalog data. Ten records, one of them retired.
 images/             Category icons, one per category
 ```

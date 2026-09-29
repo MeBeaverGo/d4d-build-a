@@ -1,41 +1,40 @@
 @import "tailwindcss";
 
 /*
-  Sixth Ward Tool Library: theme tokens. Provided.
+  Sixth Ward Tool Library: Figma Tokens collection, Value mode.
 
-  Every custom property below has a matching variable in the Figma source file's
-  Tokens collection, under the same name. Open the Figma file, select any layer,
-  and the variable listed in the right panel is the line you will find here.
-  If you add a token in one place, add it in the other.
+  Every custom property below has a matching variable in figma-variables.json,
+  including its exported WEB syntax. The JSON export is authoritative for this
+  library; keep this block aligned with it when the Figma variables change.
 
   Do not add a tailwind.config.js. Tailwind v4 reads this file.
 */
 
 @theme {
   /* surfaces and ink */
-  --color-surface: #fbfaf7;
-  --color-surface-raised: #ffffff;
-  --color-border: #e4dfd5;
-  --color-ink: #1c1b19;
-  --color-ink-muted: #57534e;
+  --color-surface: #FBFAF7;
+  --color-surface-raised: #FFFFFF;
+  --color-border: #E4DFD5;
+  --color-ink: #1C1B19;
+  --color-ink-muted: #57534E;
 
   /* action */
-  --color-accent: #1d4f4a;
-  --color-accent-hover: #16403c;
-  --color-accent-ink: #ffffff;
-  --color-disabled: #e4dfd5;
-  --color-disabled-ink: #8a857d;
-  --color-focus: #1d4f4a;
+  --color-accent: #1D4F4A;
+  --color-accent-hover: #16403C;
+  --color-accent-ink: #FFFFFF;
+  --color-disabled: #E4DFD5;
+  --color-disabled-ink: #8A857D;
+  --color-focus: #1D4F4A;
 
   /* availability: one pair per value of the availability enum */
-  --color-status-available: #2f6b3f;
-  --color-status-available-bg: #e9f1eb;
-  --color-status-out: #8a5a12;
-  --color-status-out-bg: #f7efe0;
-  --color-status-repair: #8b2f2f;
-  --color-status-repair-bg: #f7e9e9;
-  --color-status-hold: #2d4b8a;
-  --color-status-hold-bg: #e8edf7;
+  --color-status-available: #2F6B3F;
+  --color-status-available-bg: #E9F1EB;
+  --color-status-out: #8A5A12;
+  --color-status-out-bg: #F7EFE0;
+  --color-status-repair: #8B2F2F;
+  --color-status-repair-bg: #F7E9E9;
+  --color-status-hold: #2D4B8A;
+  --color-status-hold-bg: #E8EDF7;
 
   /* spacing scale */
   --spacing-xs: 4px;

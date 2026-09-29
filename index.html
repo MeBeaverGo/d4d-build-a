@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="dist/styles.css">
 </head>
 <body class="min-h-screen bg-surface font-body text-ink antialiased">
-  <main class="mx-auto max-w-[1440px] px-[40px] pb-[80px] pt-[40px]">
+  <main class="mx-auto max-w-[1440px] px-xl pb-[80px] pt-xl">
     <header class="mb-[48px]">
       <div class="flex items-center justify-between gap-4">
         <div class="flex items-center gap-3">
@@ -35,19 +35,19 @@
       <div class="flex items-end gap-[20px]">
         <label class="block min-w-[220px]">
           <span class="mb-2 block text-sm font-medium text-ink-muted">Category</span>
-          <select id="category-filter" class="w-full rounded-[8px] border border-border bg-surface px-3 py-3 text-base text-ink shadow-none outline-none transition-colors focus:border-[#8fa8a2]">
+          <select id="category-filter" class="w-full rounded-card border border-border bg-surface px-3 py-3 text-base text-ink shadow-none outline-none transition-colors focus:border-[#8fa8a2]">
             <option value="all">All</option>
           </select>
         </label>
 
         <label class="inline-flex items-center gap-3 pb-[10px]">
-          <input id="available-only" type="checkbox" class="h-[18px] w-[18px] rounded-[4px] border border-border bg-surface text-accent focus:ring-2 focus:ring-[#dfeae7]" />
+          <input id="available-only" type="checkbox" class="h-[18px] w-[18px] rounded-sm border border-border bg-surface text-accent focus:ring-2 focus:ring-[#dfeae7]" />
           <span class="text-base font-medium text-ink">Available only</span>
         </label>
 
         <label class="block flex-1">
           <span class="mb-2 block text-sm font-medium text-ink-muted">Search</span>
-          <input id="name-filter" type="search" placeholder="Search by tool name" class="w-full rounded-[8px] border border-border bg-surface px-3 py-3 text-base text-ink placeholder:text-ink-muted/80 shadow-none outline-none transition-colors focus:border-[#8fa8a2]" aria-label="Search tools by name" />
+          <input id="name-filter" type="search" placeholder="Search by tool name" class="w-full rounded-card border border-border bg-surface px-3 py-3 text-base text-ink placeholder:text-ink-muted/80 shadow-none outline-none transition-colors focus:border-[#8fa8a2]" aria-label="Search tools by name" />
         </label>
       </div>
     </section>
@@ -56,11 +56,11 @@
       <p id="result-count" aria-live="polite" class="text-sm font-medium text-ink-muted">0 tools</p>
     </div>
 
-    <div id="tool-grid" class="grid grid-cols-3 gap-[24px]"></div>
+    <div id="tool-grid" class="grid grid-cols-3 gap-lg"></div>
 
     <div id="empty-state" hidden class="mt-[16px] rounded-[12px] border border-dashed border-border bg-surface-raised p-8 text-center">
       <p class="text-lg font-medium text-ink">Nothing matched</p>
-      <button id="clear-filters" type="button" class="mt-4 inline-flex items-center rounded-full bg-accent px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-accent-hover">Clear filters</button>
+      <button id="clear-filters" type="button" class="mt-4 inline-flex items-center rounded-full bg-accent px-4 py-2 text-sm font-semibold text-accent-ink transition-colors hover:bg-accent-hover">Clear filters</button>
     </div>
   </main>
 
@@ -116,7 +116,7 @@
 
       card.innerHTML = `
         <div class="flex items-start gap-3">
-          <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-[8px] bg-[#F3F0EA] ring-1 ring-[#E7E0D5]">
+          <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-card bg-[#F3F0EA] ring-1 ring-[#E7E0D5]">
             <img src="${iconPath}" alt="${categoryLabel} icon" class="h-6 w-6" />
           </div>
           <div class="min-w-0 flex-1">
