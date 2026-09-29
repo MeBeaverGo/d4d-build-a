@@ -417,6 +417,9 @@
   .py-xs {
     padding-block: var(--spacing-xs);
   }
+  .pt-sm {
+    padding-top: var(--spacing-sm);
+  }
   .pr-10 {
     padding-right: calc(var(--spacing) * 10);
   }
