@@ -351,6 +351,9 @@
   .bg-white {
     background-color: var(--color-white);
   }
+  .p-lg {
+    padding: var(--spacing-lg);
+  }
   .p-md {
     padding: var(--spacing-md);
   }
