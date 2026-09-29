@@ -6,10 +6,209 @@
   <title>Sixth Ward Tool Library</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="dist/styles.css">
 </head>
 <body class="min-h-screen bg-surface font-body text-ink antialiased">
-  <!-- Screen 1: Catalog. Build this screen against SPEC.md. -->
+  <main class="mx-auto max-w-[1440px] px-[40px] pb-[80px] pt-[40px]">
+    <header class="mb-[48px]">
+      <div class="flex items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="flex h-[48px] w-[48px] items-center justify-center rounded-full bg-[#EAF1EE] ring-1 ring-[#D7E4DD]">
+            <span class="font-display text-[24px] leading-none text-accent">S</span>
+          </div>
+          <div>
+            <p class="font-display text-[30px] leading-none tracking-[-0.04em] text-ink">Sixth Ward</p>
+            <p class="mt-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-ink-muted">Tool Library</p>
+          </div>
+        </div>
+
+        <nav aria-label="Main navigation">
+          <a href="index.html" class="inline-flex items-center rounded-full border border-border bg-surface-raised px-4 py-2 text-sm font-medium text-ink transition-colors hover:border-[#d2cab9] hover:bg-[#f5f1ea]">
+            Catalog
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="rounded-[12px] border border-border bg-surface-raised p-5 shadow-[0_1px_0_rgba(28,27,25,0.04)]">
+      <div class="flex items-end gap-[20px]">
+        <label class="block min-w-[220px]">
+          <span class="mb-2 block text-sm font-medium text-ink-muted">Category</span>
+          <select id="category-filter" class="w-full rounded-[8px] border border-border bg-surface px-3 py-3 text-base text-ink shadow-none outline-none transition-colors focus:border-[#8fa8a2]">
+            <option value="all">All</option>
+          </select>
+        </label>
+
+        <label class="inline-flex items-center gap-3 pb-[10px]">
+          <input id="available-only" type="checkbox" class="h-[18px] w-[18px] rounded-[4px] border border-border bg-surface text-accent focus:ring-2 focus:ring-[#dfeae7]" />
+          <span class="text-base font-medium text-ink">Available only</span>
+        </label>
+
+        <label class="block flex-1">
+          <span class="mb-2 block text-sm font-medium text-ink-muted">Search</span>
+          <input id="name-filter" type="search" placeholder="Search by tool name" class="w-full rounded-[8px] border border-border bg-surface px-3 py-3 text-base text-ink placeholder:text-ink-muted/80 shadow-none outline-none transition-colors focus:border-[#8fa8a2]" aria-label="Search tools by name" />
+        </label>
+      </div>
+    </section>
+
+    <div class="mt-[28px] mb-[20px]">
+      <p id="result-count" aria-live="polite" class="text-sm font-medium text-ink-muted">0 tools</p>
+    </div>
+
+    <div id="tool-grid" class="grid grid-cols-3 gap-[24px]"></div>
+
+    <div id="empty-state" hidden class="mt-[16px] rounded-[12px] border border-dashed border-border bg-surface-raised p-8 text-center">
+      <p class="text-lg font-medium text-ink">Nothing matched</p>
+      <button id="clear-filters" type="button" class="mt-4 inline-flex items-center rounded-full bg-accent px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-accent-hover">Clear filters</button>
+    </div>
+  </main>
+
+  <script>
+    const categoryFilter = document.getElementById('category-filter');
+    const availableOnlyInput = document.getElementById('available-only');
+    const nameFilterInput = document.getElementById('name-filter');
+    const toolGrid = document.getElementById('tool-grid');
+    const emptyState = document.getElementById('empty-state');
+    const resultCount = document.getElementById('result-count');
+    const clearFiltersButton = document.getElementById('clear-filters');
+
+    const formatDueBack = (dateString) => {
+      if (!dateString) return '';
+      const value = new Date(dateString + 'T00:00:00');
+      return new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric' }).format(value);
+    };
+
+    const statusStyles = {
+      available: 'bg-[#E9F1EB] text-[#2F6B3F]',
+      checked_out: 'bg-[#F7EFE0] text-[#8A5A12]',
+      repair: 'bg-[#F7E9E9] text-[#8B2F2F]',
+      retired: 'bg-[#E8EDF7] text-[#2D4B8A]'
+    };
+
+    const statusLabels = {
+      available: 'Available',
+      checked_out: 'Checked out',
+      repair: 'Out for repair',
+      retired: 'Retired'
+    };
+
+    const getMetaLine = (tool) => {
+      if (tool.availability === 'checked_out' && tool.due_back) {
+        return `Due back ${formatDueBack(tool.due_back)},`;
+      }
+
+      if (tool.availability === 'repair') {
+        return 'Currently unavailable';
+      }
+
+      const flags = [];
+
+      if (tool.members_only) flags.push('Members only');
+      if (tool.requires_orientation) flags.push('Orientation required');
+      if (tool.deposit > 0) flags.push(`Deposit $${tool.deposit}`);
+
+      if (flags.length) {
+        return flags.join('. ');
+      }
+
+      return 'No deposit';
+    };
+
+    const renderCard = (tool, categoryLabel) => {
+      const card = document.createElement('a');
+      card.href = `tool.html?id=${encodeURIComponent(tool.id)}`;
+      card.className = 'group block rounded-[12px] border border-border bg-surface-raised p-5 text-left shadow-[0_1px_0_rgba(28,27,25,0.04)] transition-shadow hover:shadow-[0_6px_16px_rgba(28,27,25,0.08)]';
+
+      const iconPath = `images/${tool.category}.svg`;
+      const statusClass = statusStyles[tool.availability] || statusStyles.available;
+      const statusText = statusLabels[tool.availability] || statusLabels.available;
+
+      card.innerHTML = `
+        <div class="flex items-start gap-3">
+          <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-[8px] bg-[#F3F0EA] ring-1 ring-[#E7E0D5]">
+            <img src="${iconPath}" alt="${categoryLabel} icon" class="h-6 w-6" />
+          </div>
+          <div class="min-w-0 flex-1">
+            <h2 class="font-display text-[28px] leading-tight tracking-[-0.04em] text-ink">${tool.name}</h2>
+            <p class="mt-2 text-sm font-medium text-ink-muted">${categoryLabel}</p>
+          </div>
+        </div>
+
+        <div class="mt-5 flex items-center justify-between gap-3">
+          <span class="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold ${statusClass}">${statusText}</span>
+        </div>
+
+        <p class="mt-4 text-sm leading-6 text-ink-muted">${getMetaLine(tool)}</p>
+      `;
+
+      return card;
+    };
+
+    const updateFilters = (tools, categories) => {
+      const selectedCategory = categoryFilter.value;
+      const availableOnly = availableOnlyInput.checked;
+      const query = nameFilterInput.value.trim().toLowerCase();
+
+      const filtered = tools.filter((tool) => {
+        const matchesCategory = selectedCategory === 'all' || tool.category === selectedCategory;
+        const matchesAvailable = !availableOnly || tool.availability === 'available';
+        const matchesQuery = tool.name.toLowerCase().includes(query);
+        return matchesCategory && matchesAvailable && matchesQuery;
+      });
+
+      toolGrid.innerHTML = '';
+
+      if (!filtered.length) {
+        emptyState.hidden = false;
+        resultCount.textContent = '0 tools';
+        return;
+      }
+
+      emptyState.hidden = true;
+      resultCount.textContent = `${filtered.length} ${filtered.length === 1 ? 'tool' : 'tools'}`;
+
+      const categoryById = Object.fromEntries(categories.map((category) => [category.id, category.label]));
+
+      filtered.forEach((tool) => {
+        toolGrid.appendChild(renderCard(tool, categoryById[tool.category] || tool.category));
+      });
+    };
+
+    fetch('data/tools.json')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Unable to load tool catalog');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        const categories = data.categories || [];
+        const tools = (data.tools || []).filter((tool) => tool.availability !== 'retired');
+
+        categories.forEach((category) => {
+          const option = document.createElement('option');
+          option.value = category.id;
+          option.textContent = category.label;
+          categoryFilter.appendChild(option);
+        });
+
+        categoryFilter.addEventListener('change', () => updateFilters(tools, categories));
+        availableOnlyInput.addEventListener('change', () => updateFilters(tools, categories));
+        nameFilterInput.addEventListener('input', () => updateFilters(tools, categories));
+        clearFiltersButton.addEventListener('click', () => {
+          categoryFilter.value = 'all';
+          availableOnlyInput.checked = false;
+          nameFilterInput.value = '';
+          updateFilters(tools, categories);
+        });
+
+        updateFilters(tools, categories);
+      })
+      .catch((error) => {
+        console.error(error);
+        resultCount.textContent = 'Unable to load tools';
+      });
+  </script>
 </body>
 </html>
