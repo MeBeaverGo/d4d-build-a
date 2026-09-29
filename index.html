@@ -20,10 +20,7 @@
         <span id="category-filter-mount"></span>
         <span id="name-filter-mount"></span>
 
-        <label class="inline-flex items-center gap-sm">
-          <input id="available-only" type="checkbox" class="h-5 w-5 rounded-sm border border-border bg-surface-raised text-accent focus:ring-2 focus:ring-[#dfeae7]" />
-          <span class="text-base text-ink">Available only</span>
-        </label>
+        <span id="availability-toggle-mount"></span>
       </div>
 
       <p id="result-count" aria-live="polite" class="text-sm text-ink-muted">0 tools</p>
@@ -34,13 +31,16 @@
 
   <script src="src/components.js"></script>
   <script>
-    const availableOnlyInput = document.getElementById('available-only');
     const toolGrid = document.getElementById('tool-grid');
     const resultCount = document.getElementById('result-count');
 
     document.getElementById('header-mount').replaceWith(
       window.SixthWardComponents.renderHeader()
     );
+
+    const availabilityToggle = window.SixthWardComponents.renderAvailabilityToggle();
+    const availableOnlyInput = availabilityToggle.querySelector('input');
+    document.getElementById('availability-toggle-mount').replaceWith(availabilityToggle);
 
     const categoryFilterComponent = window.SixthWardComponents.renderFilterField({
       type: 'Select',

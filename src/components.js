@@ -83,6 +83,48 @@ const renderButton = ({
   return button;
 };
 
+const renderAvailabilityToggle = ({ id = 'available-only', state = false } = {}) => {
+  const toggle = document.createElement('label');
+  toggle.className = 'relative inline-flex cursor-pointer items-center gap-sm';
+  toggle.dataset.component = 'availability-toggle';
+
+  const input = document.createElement('input');
+  input.id = id;
+  input.type = 'checkbox';
+  input.checked = state;
+  input.className = 'peer absolute size-5 opacity-0';
+
+  const box = document.createElement('span');
+  box.className = 'relative size-5 shrink-0 rounded-sm peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-focus';
+
+  const label = document.createElement('span');
+  label.className = 'whitespace-nowrap font-body text-base leading-[1.5] text-ink';
+  label.textContent = 'Available only';
+
+  const updateState = () => {
+    const checked = input.checked;
+    toggle.dataset.nodeId = checked ? '5:14' : '5:11';
+    box.dataset.nodeId = checked ? '5:15' : '5:12';
+    label.dataset.nodeId = checked ? '5:17' : '5:13';
+    box.className = `relative size-5 shrink-0 rounded-sm peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-focus ${checked ? '' : 'border border-border bg-surface-raised'}`;
+    box.replaceChildren();
+
+    if (checked) {
+      const checkmark = document.createElement('img');
+      checkmark.src = 'images/availability-checked.svg';
+      checkmark.alt = '';
+      checkmark.className = 'absolute inset-0 size-full';
+      box.appendChild(checkmark);
+    }
+  };
+
+  input.addEventListener('change', updateState);
+  toggle.append(input, box, label);
+  updateState();
+
+  return toggle;
+};
+
 const renderHeader = ({ href = 'index.html' } = {}) => {
   const header = document.createElement('header');
   header.className = 'flex w-full items-center justify-between whitespace-nowrap border-b border-border bg-surface-raised px-md py-lg md:px-xl';
@@ -182,6 +224,7 @@ const renderToolCard = ({
 window.SixthWardComponents = {
   renderBadge,
   renderButton,
+  renderAvailabilityToggle,
   renderHeader,
   renderFilterField,
   renderToolCard
