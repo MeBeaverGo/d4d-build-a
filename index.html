@@ -64,6 +64,7 @@
     </div>
   </main>
 
+  <script src="src/components.js"></script>
   <script>
     const categoryFilter = document.getElementById('category-filter');
     const availableOnlyInput = document.getElementById('available-only');
@@ -77,20 +78,6 @@
       if (!dateString) return '';
       const value = new Date(dateString + 'T00:00:00');
       return new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric' }).format(value);
-    };
-
-    const statusStyles = {
-      available: 'bg-[#E9F1EB] text-[#2F6B3F]',
-      checked_out: 'bg-[#F7EFE0] text-[#8A5A12]',
-      repair: 'bg-[#F7E9E9] text-[#8B2F2F]',
-      retired: 'bg-[#E8EDF7] text-[#2D4B8A]'
-    };
-
-    const statusLabels = {
-      available: 'Available',
-      checked_out: 'Checked out',
-      repair: 'Out for repair',
-      retired: 'Retired'
     };
 
     const getMetaLine = (tool) => {
@@ -121,8 +108,11 @@
       card.className = 'group block rounded-[12px] border border-border bg-surface-raised p-5 text-left shadow-[0_1px_0_rgba(28,27,25,0.04)] transition-shadow hover:shadow-[0_6px_16px_rgba(28,27,25,0.08)]';
 
       const iconPath = `images/${tool.category}.svg`;
-      const statusClass = statusStyles[tool.availability] || statusStyles.available;
-      const statusText = statusLabels[tool.availability] || statusLabels.available;
+      const statusVariant = {
+        available: 'Available',
+        checked_out: 'CheckedOut',
+        repair: 'Repair'
+      }[tool.availability] || 'Available';
 
       card.innerHTML = `
         <div class="flex items-start gap-3">
@@ -136,11 +126,15 @@
         </div>
 
         <div class="mt-5 flex items-center justify-between gap-3">
-          <span class="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold ${statusClass}">${statusText}</span>
+          <span data-badge-slot></span>
         </div>
 
         <p class="mt-4 text-sm leading-6 text-ink-muted">${getMetaLine(tool)}</p>
       `;
+
+      card.querySelector('[data-badge-slot]').replaceWith(
+        window.SixthWardComponents.renderBadge(statusVariant)
+      );
 
       return card;
     };
