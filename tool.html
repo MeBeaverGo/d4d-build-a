@@ -10,6 +10,126 @@
   <link rel="stylesheet" href="dist/styles.css">
 </head>
 <body class="min-h-screen bg-surface font-body text-ink antialiased">
-  <!-- Screen 2: Tool detail. Build this screen against SPEC.md. -->
+  <main class="min-h-screen bg-surface">
+    <div id="header-mount"></div>
+
+    <section class="flex w-full flex-col gap-lg bg-white px-md py-lg md:px-xl">
+      <a id="back-link" class="text-base leading-[1.5] text-accent" href="index.html">Back to catalog</a>
+
+      <div class="flex w-full flex-col items-start gap-lg lg:flex-row lg:gap-xl">
+        <div class="flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-card border border-border bg-surface-raised lg:h-[480px] lg:w-[640px] lg:shrink-0">
+          <img id="tool-icon" class="size-32" src="images/ladders.svg" alt="">
+        </div>
+
+        <div class="flex w-full flex-col items-start gap-md lg:w-[560px] lg:shrink-0">
+          <p id="tool-category" class="text-sm leading-[1.45] text-ink-muted"></p>
+          <h1 id="tool-name" class="font-display text-xl font-semibold leading-[1.2] text-ink"></h1>
+          <div id="tool-badge"></div>
+          <p id="tool-summary" class="text-base leading-[1.5] text-ink"></p>
+          <div id="access-flags" class="flex w-full flex-col gap-sm overflow-hidden py-sm text-sm leading-[1.45] text-ink-muted"></div>
+          <div class="flex flex-col items-start gap-sm">
+            <button id="primary-action" type="button"></button>
+            <p id="availability-note" class="text-sm leading-[1.45] text-status-repair"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="src/components.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const toolId = params.get('id');
+    const components = window.SixthWardComponents;
+
+    document.getElementById('header-mount').replaceWith(components.renderHeader());
+
+    const formatDueBack = (dateString) => {
+      const date = new Date(`${dateString}T00:00:00`);
+      return new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric' }).format(date);
+    };
+
+    const renderFlag = (label, explanation) => {
+      const line = document.createElement('p');
+      line.textContent = `${label}: ${explanation}`;
+      return line;
+    };
+
+    const renderDetail = (tool, category) => {
+      document.title = `${tool.name} | Sixth Ward Tool Library`;
+      document.getElementById('tool-icon').src = `images/${tool.category}.svg`;
+      document.getElementById('tool-icon').alt = `${category.label} icon`;
+      document.getElementById('tool-category').textContent = category.label;
+      document.getElementById('tool-name').textContent = tool.name;
+      document.getElementById('tool-summary').textContent = tool.summary;
+      document.getElementById('tool-badge').appendChild(components.renderBadge({
+        available: 'Available',
+        checked_out: 'CheckedOut',
+        repair: 'Repair'
+      }[tool.availability] || 'Available'));
+
+      const flags = document.getElementById('access-flags');
+      if (tool.members_only) {
+        flags.appendChild(renderFlag('Members only', 'Sixth Ward membership is required to borrow this tool.'));
+      }
+      if (tool.requires_orientation) {
+        flags.appendChild(renderFlag('Requires orientation', 'a 20-minute safety orientation is required before first checkout.'));
+      }
+      if (tool.deposit > 0) {
+        flags.appendChild(renderFlag('Deposit', `a $${tool.deposit} refundable deposit is held at pickup.`));
+      }
+
+      const action = document.getElementById('primary-action');
+      const note = document.getElementById('availability-note');
+      if (tool.availability === 'checked_out' && tool.due_back) {
+        const dueBack = document.createElement('p');
+        dueBack.className = 'text-sm leading-[1.45] text-ink-muted';
+        dueBack.textContent = `Due back ${formatDueBack(tool.due_back)}.`;
+        document.getElementById('tool-badge').appendChild(dueBack);
+      }
+
+      const actionConfig = {
+        available: { label: 'Place hold', state: 'Default' },
+        checked_out: { label: 'Join waitlist', state: 'Default' },
+        repair: { label: 'Unavailable', state: 'Disabled', note: 'This tool is out for repair.' }
+      }[tool.availability];
+
+      if (!actionConfig) {
+        window.location.replace('index.html');
+        return;
+      }
+
+      action.replaceWith(components.renderButton({
+        label: actionConfig.label,
+        state: actionConfig.state
+      }));
+      const renderedAction = document.querySelector('[data-component="button"]');
+      renderedAction.addEventListener('click', () => {
+        window.location.href = `confirmation.html?id=${encodeURIComponent(tool.id)}`;
+      });
+      note.textContent = actionConfig.note || '';
+      note.hidden = !actionConfig.note;
+    };
+
+    document.getElementById('back-link').addEventListener('click', (event) => {
+      if (document.referrer.includes(window.location.host) && window.history.length > 1) {
+        event.preventDefault();
+        window.history.back();
+      }
+    });
+
+    fetch('data/tools.json')
+      .then((response) => response.json())
+      .then((data) => {
+        const tool = (data.tools || []).find((item) => item.id === toolId);
+        const category = (data.categories || []).find((item) => item.id === tool?.category);
+        if (!tool || !category || tool.availability === 'retired') {
+          window.location.replace('index.html');
+          return;
+        }
+        renderDetail(tool, category);
+      })
+      .catch(() => window.location.replace('index.html'));
+  </script>
 </body>
 </html>
