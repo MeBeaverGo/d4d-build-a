@@ -47,7 +47,7 @@ const renderBadge = (status = 'Available') => {
 
 const renderHeader = ({ href = 'index.html' } = {}) => {
   const header = document.createElement('header');
-  header.className = '-mx-xl mb-xl flex w-auto items-center justify-between whitespace-nowrap border-b border-border bg-surface-raised px-xl py-lg';
+  header.className = 'flex w-full items-center justify-between whitespace-nowrap border-b border-border bg-surface-raised px-xl py-lg';
   header.dataset.component = 'header';
   header.dataset.nodeId = '6:14';
   header.innerHTML = `

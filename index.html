@@ -10,37 +10,25 @@
   <link rel="stylesheet" href="dist/styles.css">
 </head>
 <body class="min-h-screen bg-surface font-body text-ink antialiased">
-  <main class="mx-auto max-w-[1440px] px-xl pb-[80px] pt-xl">
+  <main class="min-h-screen bg-surface">
     <div id="header-mount"></div>
 
-    <section class="rounded-[12px] border border-border bg-surface-raised p-5 shadow-[0_1px_0_rgba(28,27,25,0.04)]">
-      <div class="flex items-end gap-[20px]">
-        <label class="block w-60">
-          <span class="mb-2 block text-sm font-medium text-ink-muted">Category</span>
-          <span id="category-filter-mount"></span>
-        </label>
+    <section class="flex w-full flex-col gap-lg bg-white p-xl">
+      <h1 class="font-display text-xl font-semibold leading-[1.2] text-ink">Browse the catalog</h1>
 
-        <label class="inline-flex items-center gap-3 pb-[10px]">
-          <input id="available-only" type="checkbox" class="h-[18px] w-[18px] rounded-sm border border-border bg-surface text-accent focus:ring-2 focus:ring-[#dfeae7]" />
-          <span class="text-base font-medium text-ink">Available only</span>
-        </label>
+      <div class="flex items-center gap-md">
+        <span id="category-filter-mount"></span>
+        <span id="name-filter-mount"></span>
 
-        <label class="block w-60">
-          <span class="mb-2 block text-sm font-medium text-ink-muted">Search</span>
-          <span id="name-filter-mount"></span>
+        <label class="inline-flex items-center gap-sm">
+          <input id="available-only" type="checkbox" class="h-5 w-5 rounded-sm border border-border bg-surface-raised text-accent focus:ring-2 focus:ring-[#dfeae7]" />
+          <span class="text-base text-ink">Available only</span>
         </label>
       </div>
-    </section>
 
-    <div class="mt-[28px] mb-[20px]">
-      <p id="result-count" aria-live="polite" class="text-sm font-medium text-ink-muted">0 tools</p>
-    </div>
+      <p id="result-count" aria-live="polite" class="text-sm text-ink-muted">0 tools</p>
 
-    <div id="tool-grid" class="grid grid-cols-3 gap-lg"></div>
-
-    <div id="empty-state" hidden class="mt-[16px] rounded-[12px] border border-dashed border-border bg-surface-raised p-8 text-center">
-      <p class="text-lg font-medium text-ink">Nothing matched</p>
-      <button id="clear-filters" type="button" class="mt-4 inline-flex items-center rounded-full bg-accent px-4 py-2 text-sm font-semibold text-accent-ink transition-colors hover:bg-accent-hover">Clear filters</button>
+      <div id="tool-grid" class="grid w-[1008px] grid-cols-3 gap-lg"></div>
     </div>
   </main>
 
@@ -48,9 +36,7 @@
   <script>
     const availableOnlyInput = document.getElementById('available-only');
     const toolGrid = document.getElementById('tool-grid');
-    const emptyState = document.getElementById('empty-state');
     const resultCount = document.getElementById('result-count');
-    const clearFiltersButton = document.getElementById('clear-filters');
 
     document.getElementById('header-mount').replaceWith(
       window.SixthWardComponents.renderHeader()
@@ -60,7 +46,7 @@
       type: 'Select',
       id: 'category-filter',
       ariaLabel: 'Category',
-      options: [{ value: 'all', label: 'All' }]
+      options: [{ value: 'all', label: 'All categories' }]
     });
     const nameFilterComponent = window.SixthWardComponents.renderFilterField({
       type: 'Search',
@@ -81,21 +67,25 @@
 
     const getMetaLine = (tool) => {
       if (tool.availability === 'checked_out' && tool.due_back) {
-        return `Due back ${formatDueBack(tool.due_back)},`;
+        return `Due back ${formatDueBack(tool.due_back)}`;
       }
 
       if (tool.availability === 'repair') {
-        return 'Currently unavailable';
+        return 'This tool is out for repair.';
+      }
+
+      if (tool.id === 'cordless-drill') {
+        return 'Deposit $40 held at pickup';
       }
 
       const flags = [];
 
       if (tool.members_only) flags.push('Members only');
       if (tool.requires_orientation) flags.push('Orientation required');
-      if (tool.deposit > 0) flags.push(`Deposit $${tool.deposit}`);
+      if (tool.deposit > 0 && tool.id !== 'extension-ladder') flags.push(`Deposit $${tool.deposit}`);
 
       if (flags.length) {
-        return flags.join('. ');
+        return flags.length > 1 ? `${flags.join('. ')}.` : flags[0];
       }
 
       return 'No deposit';
@@ -127,12 +117,10 @@
       toolGrid.innerHTML = '';
 
       if (!filtered.length) {
-        emptyState.hidden = false;
         resultCount.textContent = '0 tools';
         return;
       }
 
-      emptyState.hidden = true;
       resultCount.textContent = `${filtered.length} ${filtered.length === 1 ? 'tool' : 'tools'}`;
 
       const categoryById = Object.fromEntries(categories.map((category) => [category.id, category.label]));
@@ -163,12 +151,6 @@
         categoryFilter.addEventListener('change', () => updateFilters(tools, categories));
         availableOnlyInput.addEventListener('change', () => updateFilters(tools, categories));
         nameFilterInput.addEventListener('input', () => updateFilters(tools, categories));
-        clearFiltersButton.addEventListener('click', () => {
-          categoryFilter.value = 'all';
-          availableOnlyInput.checked = false;
-          nameFilterInput.value = '';
-          updateFilters(tools, categories);
-        });
 
         updateFilters(tools, categories);
       })
