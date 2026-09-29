@@ -47,13 +47,13 @@ const renderBadge = (status = 'Available') => {
 
 const buttonVariants = {
   Primary: {
-    Default: { background: 'bg-accent', text: 'text-accent-ink', nodeId: '3:11', textNodeId: '3:12' },
+    Default: { background: 'bg-accent hover:bg-accent-hover', text: 'text-accent-ink', nodeId: '3:11', textNodeId: '3:12' },
     Hover: { background: 'bg-accent-hover', text: 'text-accent-ink', nodeId: '3:13', textNodeId: '3:14' },
     Focus: { background: 'bg-accent', text: 'text-accent-ink', border: 'border-2 border-focus', nodeId: '3:15', textNodeId: '3:16' },
     Disabled: { background: 'bg-disabled', text: 'text-disabled-ink', nodeId: '3:17', textNodeId: '3:18' }
   },
   Secondary: {
-    Default: { background: 'bg-surface-raised border border-border', text: 'text-ink', nodeId: '3:19', textNodeId: '3:20' },
+    Default: { background: 'bg-surface-raised hover:bg-surface border border-border', text: 'text-ink', nodeId: '3:19', textNodeId: '3:20' },
     Hover: { background: 'bg-surface border border-border', text: 'text-ink', nodeId: '3:21', textNodeId: '3:22' },
     Focus: { background: 'bg-surface-raised border-2 border-focus', text: 'text-ink', nodeId: '3:23', textNodeId: '3:24' },
     Disabled: { background: 'bg-surface border border-border', text: 'text-disabled-ink', nodeId: '3:25', textNodeId: '3:26' }

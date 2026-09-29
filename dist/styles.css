@@ -543,6 +543,12 @@
     outline-color: var(--color-focus);
   }
   @media (hover: hover) {
+    .hover\:bg-accent-hover:hover {
+      background-color: var(--color-accent-hover);
+    }
+    .hover\:bg-surface:hover {
+      background-color: var(--color-surface);
+    }
     .hover\:shadow-\[0_6px_16px_rgba\(28\,27\,25\,0\.08\)\]:hover {
       --tw-shadow: 0 6px 16px var(--tw-shadow-color, rgba(28,27,25,0.08));
       box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
