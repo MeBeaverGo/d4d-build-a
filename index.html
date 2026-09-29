@@ -33,11 +33,9 @@
 
     <section class="rounded-[12px] border border-border bg-surface-raised p-5 shadow-[0_1px_0_rgba(28,27,25,0.04)]">
       <div class="flex items-end gap-[20px]">
-        <label class="block min-w-[220px]">
+        <label class="block w-60">
           <span class="mb-2 block text-sm font-medium text-ink-muted">Category</span>
-          <select id="category-filter" class="w-full rounded-card border border-border bg-surface px-3 py-3 text-base text-ink shadow-none outline-none transition-colors focus:border-[#8fa8a2]">
-            <option value="all">All</option>
-          </select>
+          <span id="category-filter-mount"></span>
         </label>
 
         <label class="inline-flex items-center gap-3 pb-[10px]">
@@ -45,9 +43,9 @@
           <span class="text-base font-medium text-ink">Available only</span>
         </label>
 
-        <label class="block flex-1">
+        <label class="block w-60">
           <span class="mb-2 block text-sm font-medium text-ink-muted">Search</span>
-          <input id="name-filter" type="search" placeholder="Search by tool name" class="w-full rounded-card border border-border bg-surface px-3 py-3 text-base text-ink placeholder:text-ink-muted/80 shadow-none outline-none transition-colors focus:border-[#8fa8a2]" aria-label="Search tools by name" />
+          <span id="name-filter-mount"></span>
         </label>
       </div>
     </section>
@@ -66,13 +64,28 @@
 
   <script src="src/components.js"></script>
   <script>
-    const categoryFilter = document.getElementById('category-filter');
     const availableOnlyInput = document.getElementById('available-only');
-    const nameFilterInput = document.getElementById('name-filter');
     const toolGrid = document.getElementById('tool-grid');
     const emptyState = document.getElementById('empty-state');
     const resultCount = document.getElementById('result-count');
     const clearFiltersButton = document.getElementById('clear-filters');
+
+    const categoryFilterComponent = window.SixthWardComponents.renderFilterField({
+      type: 'Select',
+      id: 'category-filter',
+      ariaLabel: 'Category',
+      options: [{ value: 'all', label: 'All' }]
+    });
+    const nameFilterComponent = window.SixthWardComponents.renderFilterField({
+      type: 'Search',
+      id: 'name-filter',
+      ariaLabel: 'Search tools by name'
+    });
+    const categoryFilter = categoryFilterComponent.firstElementChild;
+    const nameFilterInput = nameFilterComponent.firstElementChild;
+
+    document.getElementById('category-filter-mount').replaceWith(categoryFilterComponent);
+    document.getElementById('name-filter-mount').replaceWith(nameFilterComponent);
 
     const formatDueBack = (dateString) => {
       if (!dateString) return '';
