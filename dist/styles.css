@@ -578,6 +578,10 @@
     .md\:px-xl {
       padding-inline: var(--spacing-xl);
     }
+    .md\:text-xl {
+      font-size: var(--text-xl);
+      line-height: var(--tw-leading, var(--text-xl--line-height));
+    }
   }
   @media (width >= 64rem) {
     .lg\:h-\[480px\] {
