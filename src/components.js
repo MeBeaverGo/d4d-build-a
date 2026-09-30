@@ -85,7 +85,7 @@ const renderButton = ({
 
 const renderEmptyState = ({ onClear } = {}) => {
   const emptyState = document.createElement('div');
-  emptyState.className = 'flex w-full max-w-160 flex-col items-center gap-md rounded-card bg-surface px-lg py-xl';
+  emptyState.className = 'mx-auto flex w-full max-w-160 flex-col items-center gap-md rounded-card bg-surface px-lg py-xl';
   emptyState.dataset.component = 'empty-state';
   emptyState.dataset.nodeId = '5:19';
 
