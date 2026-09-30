@@ -156,7 +156,7 @@ const renderHeader = ({ href = 'index.html' } = {}) => {
   header.dataset.component = 'header';
   header.dataset.nodeId = '6:14';
   header.innerHTML = `
-    <p class="font-display text-lg font-semibold leading-[1.3] text-ink" data-node-id="6:15">
+    <p class="font-display text-base md:text-lg font-semibold leading-[1.3] text-ink" data-node-id="6:15">
       Sixth Ward Tool Library
     </p>
     <a class="font-body text-base leading-[1.5] text-ink-muted" href="${href}" data-node-id="6:16">
